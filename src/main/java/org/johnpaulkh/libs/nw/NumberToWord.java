@@ -83,7 +83,9 @@ public class NumberToWord {
     // eg: 520
     if (remain > 0) {
       var digit = DIGITS.get((int) (currVal - 1)).word;
-      return currVal == 1
+
+      // Indonesian uses 'se' in place for 'satu' for <= 1000
+      return currVal == 1 && currDivider <= 1000
           ? String.format("se%s %s", word, getWord(remain, index + 1))
           : String.format("%s %s %s", digit, word, getWord(remain, index + 1));
     }
@@ -93,7 +95,7 @@ public class NumberToWord {
     if (currDivider >= 10) {
       var digit = DIGITS.get((int) (currVal - 1)).word;
 
-      return currVal == 1
+      return currVal == 1 && currDivider <= 1000
           ? String.format("se%s", word)
           : String.format("%s %s", digit, word);
     }
