@@ -67,7 +67,7 @@ public class NumberToWord {
 
     // current value still need to be processed even after divided
     // eg: 132.000
-    if (remain > 0 && currVal >= 10) {
+    if (currVal >= 10) {
       return String.format("%s %s %s", getWord(currVal, index + 1), word, getWord(remain, index + 1));
     }
 
